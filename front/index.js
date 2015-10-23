@@ -18,7 +18,9 @@ class Server {
   run () {
     this.app.set('port', config.front.port);
 
+    this.preRouteMiddleware();
     this.app.get('*', (req, res, next) => res.sendFile(`${__dirname}/public/index.html`));
+    this.postRouteMiddleware();
 
     this.app.listen(config.front.port, config.front.ip, () => {
       console.log(`front running on ${config.front.ip}:${config.front.port}`);
