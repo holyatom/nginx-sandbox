@@ -21,7 +21,7 @@ and for staging
 
 `echo "127.0.0.1 staging.nginx-sandbox.dev" >> /private/etc/hosts` (MacOS)
 
-`echo "127.0.0.1 staging.nginx-sandbox.dev"` >> /etc/hosts (Linux)
+`echo "127.0.0.1 staging.nginx-sandbox.dev" >> /etc/hosts` (Linux)
 
 
 Run both staging and production applications
