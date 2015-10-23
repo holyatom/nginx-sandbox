@@ -19,7 +19,15 @@ class Server {
     this.app.set('port', config.api.port);
 
     this.preRouteMiddleware();
-    this.app.get('/api/hello', (req, res, next) => res.json({ message: 'hello world' }));
+
+    this.app.get('/api/hello', (req, res, next) => {
+      if (config.env === 'production') {
+        res.json({ message: 'glad to see you' });
+      } else {
+        res.json({ message: 'hello world' });
+      }
+    });
+
     this.postRouteMiddleware();
 
     this.app.listen(config.api.port, config.api.ip, () => {

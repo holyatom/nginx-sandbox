@@ -19,7 +19,15 @@ class Server {
     this.app.set('port', config.front.port);
 
     this.preRouteMiddleware();
-    this.app.get('*', (req, res, next) => res.sendFile(`${__dirname}/public/index.html`));
+
+    this.app.get('*', (req, res, next) => {
+      if (config.env === 'production') {
+        res.sendFile(`${__dirname}/public/index.prod.html`)
+      } else {
+        res.sendFile(`${__dirname}/public/index.html`)
+      }
+    });
+
     this.postRouteMiddleware();
 
     this.app.listen(config.front.port, config.front.ip, () => {
