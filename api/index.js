@@ -20,7 +20,7 @@ class Server {
 
     this.preRouteMiddleware();
     this.app.get('/api/hello', (req, res, next) => res.json({ message: 'hello world' }));
-    postRouteMiddleware();
+    this.postRouteMiddleware();
 
     this.app.listen(config.api.port, config.api.ip, () => {
       console.log(`api running on ${config.api.ip}:${config.api.port}`);
